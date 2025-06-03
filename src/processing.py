@@ -2,10 +2,10 @@ from typing import Union
 from typing import Any
 
 
-def filter_by_state(list_of_dictionaries: Union[list], key: Any) -> Union[list]:
+def filter_by_state(list_of_dictionaries: Union[list], key: Any = 'EXECUTED') -> Union[list]:
     """Функция сортирует по статусу исполнения.
     Функция получает на вход список словарей и ключ, и возвращает только те словари,
-    у которых статус(state) соответствует заданному функцией условию(key)."""
+    у которых статус(state) соответствует заданному функцией условию(key, по умолчанию - 'EXECUTED')"""
     new_dict_list = list()
     for dictionary in list_of_dictionaries:
         if dictionary["state"] == key:
