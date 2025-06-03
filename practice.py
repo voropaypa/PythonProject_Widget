@@ -67,5 +67,3 @@ def get_circle_info(r: float) -> None:
 
 radius = int(input("Enter circle radius (int): "))
 get_circle_info(radius)
-
-
