@@ -1,9 +1,7 @@
 from typing import Union
 
-from mypyc.primitives.list_ops import list_set_item_op
 
-
-def filter_by_state(list_of_dictionaries: Union[list], key: Union[str] = 'EXECUTED') -> Union[list]:
+def filter_by_state(list_of_dictionaries: Union[list], key: Union[str] = "EXECUTED") -> Union[list]:
     """Функция сортирует по статусу исполнения.
     Функция получает на вход список словарей и ключ, и возвращает только те словари,
     у которых статус(state) соответствует заданному функцией условию(key, по умолчанию - 'EXECUTED')"""
@@ -22,6 +20,6 @@ def sort_by_date(list_of_dicts: Union[list], reverse: bool = True) -> Union[list
     и возвращает словари в заданном порядке, сортируя их по дате(ключ 'date')"""
     sorted_dict_list = sorted(list_of_dicts, key=lambda x: x["date"], reverse=reverse)
     for dict in list_of_dicts:
-        if len(dict["date"]) != 26 or type(dict["date"]) != str:
+        if len(dict["date"]) != 26 or not isinstance(dict["date"], str):
             raise ValueError("Ошибка. Неправильный формат даты")
     return sorted_dict_list

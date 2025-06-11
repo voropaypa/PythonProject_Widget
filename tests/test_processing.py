@@ -79,7 +79,8 @@ def test_sort_by_date_wrong_date_format():
     """Проверяет, что срабатывает вызов ошибки при неправильном формате даты"""
     with pytest.raises(ValueError):
         assert sort_by_date([
-        {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-068:58.425572'},
-        {'id': 594226727, 'state': 'CANCELED', 'date': '209-12T21:27:25.241689'},
-        {'id': 615064591, 'state': 'CANCELED', 'date': '25698'},
-        {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-0712364'}])
+            {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-068:58.425572'},
+            {'id': 594226727, 'state': 'CANCELED', 'date': '209-12T21:27:25.241689'},
+            {'id': 615064591, 'state': 'CANCELED', 'date': '25698'},
+            {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-0712364'}
+        ])

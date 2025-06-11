@@ -39,6 +39,6 @@ def mask_account_card(card_info: Union[str]) -> Union[str]:
 def get_date(date_data: Union[str]) -> Union[str]:
     """Принимает на вход строку с датой в формате '2024-03-11T02:26:18.671407'
     и возвращает строку с датой в формате 'ДД.ММ.ГГГГ'"""
-    if len(str(date_data)) != 26 or type(date_data) != str:
+    if len(str(date_data)) != 26 or not isinstance(date_data, str):
         raise ValueError("Ошибка. Неправильный формат даты")
     return f"{date_data[8:10]}.{date_data[5:7]}.{date_data[:4]}"

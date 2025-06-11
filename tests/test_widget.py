@@ -61,6 +61,7 @@ def wrong_examples_for_date():
             "73654108430135874305",
             "Счет 35383047895560",]
 
+
 def test_get_date_wrong_date():
     """Проверяет, что срабатывает вызов ошибки при некорректном вводе даты"""
     with pytest.raises(ValueError):

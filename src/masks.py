@@ -6,7 +6,7 @@ def get_mask_card_number(card_number: Union[int]) -> Union[str]:
     где X — это цифра номера."""
     if card_number == "":
         raise ValueError("Ошибка. Пустой ввод.")
-    elif type(card_number) == str:
+    elif isinstance(card_number, str):
         raise TypeError("Ошибка. Введён неправильный тип данных.")
 
     card_number_str = str(card_number)
@@ -22,7 +22,7 @@ def get_mask_account(account_number: Union[int]) -> Union[str]:
     Номер счета замаскирован и отображается в формате **XXXX, где X — это цифра номера."""
     if account_number == "":
         raise ValueError("Ошибка. Пустой ввод.")
-    elif type(account_number) == str:
+    elif isinstance(account_number, str):
         raise TypeError("Ошибка. Введён неправильный тип данных.")
 
     account_number_str = str(account_number)
