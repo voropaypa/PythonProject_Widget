@@ -6,7 +6,7 @@ def filter_by_state(list_of_dictionaries: Union[list], key: Union[str] = 'EXECUT
     Функция получает на вход список словарей и ключ, и возвращает только те словари,
     у которых статус(state) соответствует заданному функцией условию(key, по умолчанию - 'EXECUTED')"""
     new_dict_list = list()
-    for dictionary in list_of_dictionaries:
+    for dictionary in list(list_of_dictionaries):
         if dictionary["state"] == key:
             new_dict_list.append(dictionary)
     if new_dict_list == []:
