@@ -9,6 +9,8 @@ def filter_by_state(list_of_dictionaries: Union[list], key: Union[str] = 'EXECUT
     for dictionary in list_of_dictionaries:
         if dictionary["state"] == key:
             new_dict_list.append(dictionary)
+    if new_dict_list == []:
+        raise KeyError("Операций с таким статусом не обнаружено.")
     return new_dict_list
 
 
