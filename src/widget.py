@@ -8,27 +8,37 @@ def mask_account_card(card_info: Union[str]) -> Union[str]:
     Возвращает счет/название карты и маску номера"""
     card_alpha = ""
     card_digit = ""
-    for symbol in card_info:
+    for symbol in str(card_info):
         if symbol.isalpha():
             card_alpha += symbol
         if symbol == " ":
             card_alpha += symbol
         elif symbol.isdigit():
             card_digit += symbol
+
+    card_digit_int = int(card_digit)
+
     if len(card_digit) == 16:
-        card_digit_int = int(card_digit)
         card_mask = get_mask_card_number(card_digit_int)
     elif len(card_digit) == 20:
-        card_digit_int = int(card_digit)
         card_mask = get_mask_account(card_digit_int)
+
+    if card_alpha == "":
+        raise ValueError("Ошибка. Нет названия карты или счёта.")
+    elif len(card_digit) < 16 or card_digit == "":
+        raise ValueError("Ошибка. Неправильно введён номер карты или счёта.")
+
+    if card_alpha == "Счет " and len(card_digit) < 20:
+        raise ValueError("Ошибка. Неправильно введён номер счёта.")
+    elif card_alpha != "Счет " and len(card_digit) > 16:
+        raise ValueError("Ошибка. Неправильно введён номер карты.")
+
     return card_alpha + card_mask
 
 
 def get_date(date_data: Union[str]) -> Union[str]:
     """Принимает на вход строку с датой в формате '2024-03-11T02:26:18.671407'
     и возвращает строку с датой в формате 'ДД.ММ.ГГГГ'"""
+    if len(str(date_data)) != 26 or not isinstance(date_data, str):
+        raise ValueError("Ошибка. Неправильный формат даты")
     return f"{date_data[8:10]}.{date_data[5:7]}.{date_data[:4]}"
-
-
-# print(get_date("2024-03-11T02:26:18.671407"))
-# print(mask_account_card("Счет 73654108430135874305"))
