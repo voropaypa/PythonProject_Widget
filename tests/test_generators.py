@@ -191,7 +191,8 @@ def test_card_number_generator_wrong_nums():
     with pytest.raises(ValueError):
         assert next(generator)
 
-@pytest.mark.parametrize("start, end",[
+
+@pytest.mark.parametrize("start, end", [
     (0, 1),
     (9998, 9999)
 ])

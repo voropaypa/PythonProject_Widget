@@ -1,9 +1,7 @@
-from typing import Union
-
-from pycodestyle import continued_indentation
+from typing import Union, Generator
 
 
-def filter_by_currency(transactions: Union[list], currency: Union[str]) -> Union[list]:
+def filter_by_currency(transactions: Union[list], currency: Union[str]) -> Generator:
     """Функция-генератор, которая принимает на вход список словарей,
     представляющих транзакции. Функция возвращает итератор,
     который поочередно выдает транзакции, где валюта операции
@@ -22,7 +20,7 @@ def filter_by_currency(transactions: Union[list], currency: Union[str]) -> Union
                 raise ValueError("Все транзакции по заданной валюте были выведены.")
 
 
-def transaction_descriptions(transactions: Union[list]) -> Union[str]:
+def transaction_descriptions(transactions: Union[list]) -> Generator:
     """Функция-генератор, которая принимает на вход список словарей,
     представляющих транзакции. Функция возвращает итератор, который поочерёдно
     возвращает описание каждой операции."""
@@ -38,7 +36,7 @@ def transaction_descriptions(transactions: Union[list]) -> Union[str]:
                 raise ValueError("Описания всех транзакций были выведены.")
 
 
-def card_number_generator(start: Union[int], stop: Union[int]) -> Union[str]:
+def card_number_generator(start: Union[int], stop: Union[int]) -> Generator:
     """Функция-генератор, которая выдает поочерёдно банковские номера в формате
     "XXXX XXXX XXXX XXXX" в заданном диапазоне от 0000 0000 0000 0001
     до 9999 9999 9999 9999. Генератор принимает начальное и конечное значения
@@ -55,4 +53,3 @@ def card_number_generator(start: Union[int], stop: Union[int]) -> Union[str]:
             counter += 1
             if ((stop + 1) - start) == counter:
                 raise ValueError("Все номера карт в заданном диапазоне были выведены.")
-
