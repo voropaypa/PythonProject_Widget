@@ -38,16 +38,21 @@ def transaction_descriptions(transactions: Union[list]) -> Union[str]:
                 raise ValueError("Описания всех транзакций были выведены.")
 
 
-def card_number_generator(num1: Union[int], num2: Union[int]) -> Union[str]:
+def card_number_generator(start: Union[int], stop: Union[int]) -> Union[str]:
     """Функция-генератор, которая выдает поочерёдно банковские номера в формате
     "XXXX XXXX XXXX XXXX" в заданном диапазоне от 0000 0000 0000 0001
     до 9999 9999 9999 9999. Генератор принимает начальное и конечное значения
     для генерации диапазона номеров."""
-    if num1 > 0 or num2 < 9999999999999999:
-        for num in range(num1, num2 + 1):
+    counter = 0
+    if not (0 <= start <= 9999999999999999) or not (0 < stop <= 9999999999999999):
+        raise ValueError("Ошибка. Неправильный формат номера")
+    else:
+        for num in range(start, stop + 1):
             num_line = f"{num:016d}"
             line_with_spaces = " ".join(num_line[i:i+4] for i in range(0, len(num_line), 4))
             yield line_with_spaces
             num += 1
-    else:
-        raise ValueError("Ошибка. Неправильный формат номера")
+            counter += 1
+            if ((stop + 1) - start) == counter:
+                raise ValueError("Все номера карт в заданном диапазоне были выведены.")
+

@@ -172,3 +172,33 @@ def test_transaction_descriptions_end_func(transactions):
     assert next(generator) == "Перевод организации"
     with pytest.raises(ValueError):
         assert next(generator)
+
+
+def test_card_number_generator():
+    """Проверка вывода чисел с помощью функции-генератора
+    при корректном вводе данных"""
+    generator_first_nums = card_number_generator(0, 2)
+    assert next(generator_first_nums) == "0000 0000 0000 0000"
+    assert next(generator_first_nums) == "0000 0000 0000 0001"
+    generator_other_nums = card_number_generator(99998, 99999)
+    assert next(generator_other_nums) == "0000 0000 0009 9998"
+    assert next(generator_other_nums) == "0000 0000 0009 9999"
+
+
+def test_card_number_generator_wrong_nums():
+    """Проверка работы функции-генератора при некорректном вводе данных - значений, не входящих в допустимые"""
+    generator = card_number_generator(10000000000000000, 10000000000000001)
+    with pytest.raises(ValueError):
+        assert next(generator)
+
+@pytest.mark.parametrize("start, end",[
+    (0, 1),
+    (9998, 9999)
+])
+def test_card_number_generator_end(start, end):
+    """Проверка завершения работы итерации"""
+    generator = card_number_generator(start, end)
+    assert next(generator)
+    assert next(generator)
+    with pytest.raises(ValueError):
+        assert next(generator)
