@@ -1,4 +1,4 @@
-from typing import Union, Generator
+from typing import Generator, Union
 
 
 def filter_by_currency(transactions: Union[list], currency: Union[str]) -> Generator:
