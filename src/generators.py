@@ -15,9 +15,6 @@ def filter_by_currency(transactions: Union[list], currency: Union[str]) -> Gener
     else:
         for transaction in filter_result:
             yield transaction
-            counter += 1
-            if len(filter_result) == counter:
-                raise ValueError("Все транзакции по заданной валюте были выведены.")
 
 
 def transaction_descriptions(transactions: Union[list]) -> Generator:
@@ -31,9 +28,6 @@ def transaction_descriptions(transactions: Union[list]) -> Generator:
     else:
         for description in descriptions_list:
             yield description
-            counter += 1
-            if len(descriptions_list) == counter:
-                raise ValueError("Описания всех транзакций были выведены.")
 
 
 def card_number_generator(start: Union[int], stop: Union[int]) -> Generator:
@@ -49,7 +43,3 @@ def card_number_generator(start: Union[int], stop: Union[int]) -> Generator:
             num_line = f"{num:016d}"
             line_with_spaces = " ".join(num_line[i:i+4] for i in range(0, len(num_line), 4))
             yield line_with_spaces
-            num += 1
-            counter += 1
-            if ((stop + 1) - start) == counter:
-                raise ValueError("Все номера карт в заданном диапазоне были выведены.")

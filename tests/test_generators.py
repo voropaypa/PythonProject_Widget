@@ -135,7 +135,7 @@ def test_filter_by_currency_end_func(transactions):
     generator_rub = filter_by_currency(transactions, "RUB")
     assert next(generator_rub)
     assert next(generator_rub)
-    with pytest.raises(ValueError):
+    with pytest.raises(StopIteration):
         assert next(generator_rub)
 
 
@@ -171,7 +171,7 @@ def test_transaction_descriptions_end_func(transactions):
     assert next(generator) == "Перевод со счета на счет"
     assert next(generator) == "Перевод с карты на карту"
     assert next(generator) == "Перевод организации"
-    with pytest.raises(ValueError):
+    with pytest.raises(StopIteration):
         assert next(generator)
 
 
@@ -202,5 +202,5 @@ def test_card_number_generator_end(start, end):
     generator = card_number_generator(start, end)
     assert next(generator)
     assert next(generator)
-    with pytest.raises(ValueError):
+    with pytest.raises(StopIteration):
         assert next(generator)
