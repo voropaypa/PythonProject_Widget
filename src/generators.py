@@ -6,7 +6,6 @@ def filter_by_currency(transactions: Union[list], currency: Union[str]) -> Gener
     представляющих транзакции. Функция возвращает итератор,
     который поочередно выдает транзакции, где валюта операции
     соответствует заданной (например, USD)."""
-    counter = 0
     filter_result = [x for x in transactions if x["operationAmount"]["currency"]["code"] == currency]
     if transactions == []:
         raise ValueError("Ошибка. Транзакции не обнаружены.")
@@ -21,7 +20,6 @@ def transaction_descriptions(transactions: Union[list]) -> Generator:
     """Функция-генератор, которая принимает на вход список словарей,
     представляющих транзакции. Функция возвращает итератор, который поочерёдно
     возвращает описание каждой операции."""
-    counter = 0
     descriptions_list = [x["description"] for x in transactions]
     if transactions == []:
         raise ValueError("Ошибка. Транзакции не обнаружены.")
@@ -35,7 +33,6 @@ def card_number_generator(start: Union[int], stop: Union[int]) -> Generator:
     "XXXX XXXX XXXX XXXX" в заданном диапазоне от 0000 0000 0000 0001
     до 9999 9999 9999 9999. Генератор принимает начальное и конечное значения
     для генерации диапазона номеров."""
-    counter = 0
     if not (0 <= start <= 9999999999999999) or not (0 < stop <= 9999999999999999):
         raise ValueError("Ошибка. Неправильный формат номера")
     else:

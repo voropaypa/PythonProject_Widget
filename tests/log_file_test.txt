@@ -1,0 +1,4 @@
+Function my_function called with args: (1, 2) and kwargs: {}. Result: 3.
+The function was running for 4.76837158203125e-07.
+Function my_function called with args: (1, 'e') and kwargs: {}. Resulted with an Error: TypeError.
+The function was running for 4.76837158203125e-06.
