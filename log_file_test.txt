@@ -1,0 +1,12 @@
+Function my_function called with args: (1, 2) and kwargs: {}. Result: 3.
+The function was running for 2.384185791015625e-06.
+Function my_function called with args: (1, 'e') and kwargs: {}. Resulted with an Error: TypeError.
+The function was running for 5.245208740234375e-06.
+Function my_function called with args: (1, 2) and kwargs: {}. Result: 3.
+The function was running for 2.1457672119140625e-06.
+Function my_function called with args: (1, 'e') and kwargs: {}. Resulted with an Error: TypeError.
+The function was running for 5.245208740234375e-06.
+Function my_function called with args: (1, 2) and kwargs: {}. Result: 3.
+The function was running for 1.9073486328125e-06.
+Function my_function called with args: (1, 'e') and kwargs: {}. Resulted with an Error: TypeError.
+The function was running for 1.2636184692382812e-05.
